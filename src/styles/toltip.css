@@ -1,0 +1,51 @@
+body {
+  position: relative;
+}
+
+#toltip {
+  visibility: hidden;
+
+  position: absolute;
+  right: 100px;
+  bottom: 10px;
+  z-index: 10;
+
+  display: flex;
+  padding: 21px 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 17px;
+
+  border-radius: 4px;
+  background: var(--gray900);
+  box-shadow: 0px 4px 30px -12px #000000;
+}
+
+#toltip.show {
+  visibility: visible; /* Show the snackbar */
+}
+
+.check__icon {
+  font-size: 25px;
+  line-height: var(--line);
+}
+
+.toltip__message {
+  color: var(--sucess100);
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  line-height: var(--line);
+}
+
+.toltip__paragraph {
+  color: var(--gray200);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-regular);
+  line-height: var(--line);
+  max-width: 400px;
+}
+
+.toltip__paragraph a {
+  color: var(--brand100);
+}

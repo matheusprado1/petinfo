@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/globalStyles.css">
+  <link rel="stylesheet" href="../styles/buttons.css">
+  <link rel="stylesheet" href="../styles/home.css">
+  <script type="module" src="../scripts/api.js" defer></script>
+  <script type="module" src="../scripts/home.js" defer></script>
+  <title>PetInfo - Home Page</title>
+</head>
+
+<body>
+  <main class="main__container">
+    <header class="header__container">
+      <h1 class="header__title">Petinfo</h1>
+      <div class="header__profile" id="profile">
+        <button class="button__profile" id="createPost">Criar Publicação</button>
+        <img class="image__profile" src="">
+      </div>
+      <dialog class="post__modal" id="postModalController">
+        <div class="modal__container">
+          <div class="modal__title">
+            <h3>Criando novo post</h3>
+            <span>X</span>
+          </div>
+          <div class="modal__content">
+            <h4>Titulo do post</h4>
+            <input type="text" id="postTitle" class="input__title" placeholder="Digite o titulo aqui...">
+            <h4>Conteúdo do post</h4>
+            <textarea class="input__content" id="postContent"
+              placeholder="Desenvolva o conteúdo do post aqui..."></textarea>
+            <div class="modal__buttons">
+              <button class="close-cancel__button" id="closeModal">Cancelar</button>
+              <button class="confirm__button" id="sendPost">Publicar</button>
+            </div>
+          </div>
+        </div>
+
+      </dialog>
+    </header>
+    <div class="feed__container">
+      <h2>Feed</h2>
+    </div>
+    <div id="posts">
+      <dialog class="edit__modal" id="editModalController">
+        <div class="edit__modal__container">
+          <div class="modal__title">
+            <h3>Edição</h3>
+            <span>X</span>
+          </div>
+          <div class="modal__content">
+            <h4>Titulo do post</h4>
+            <input type="text" id="editTitle" class="input__title edit__title" placeholder="" value="">
+            <h4>Conteúdo do post</h4>
+            <textarea class="input__content" id="editContent" placeholder=""></textarea>
+            <div class="modal__buttons">
+              <button class="close-cancel__button" id="closeEditModal">Cancelar</button>
+              <button class="confirm__button" id="editPost">Salvar Alterações</button>
+            </div>
+          </div>
+        </div>
+
+      </dialog>
+    </div>
+  </main>
+</body>
+
+</html>

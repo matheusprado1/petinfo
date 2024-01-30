@@ -4,11 +4,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/globalStyles.css">
+  <link rel="stylesheet" href="../styles/buttons.css">
+  <link rel="stylesheet" href="../styles/register.css">
+  <link rel="stylesheet" href="../styles/toltip.css">
+  <script type="module" src="../scripts/api.js" defer></script>
+  <script type="module" src="../scripts/register.js" defer></script>
+  <script type="module" src="../scripts//toltip.js" defer></script>
+  <title>PetInfo - Cadastro</title>
 </head>
 
 <body>
+  <main class="main__container">
+    <div class="register__container">
+      <h3 class="register__title">Cadastro</h3>
+      <form action="" class="register__form">
+        <div class="input__container">
+          <label for="registerUser">Usuário</label>
+          <input type="text" class="input__register" id="registerUser" placeholder="Digite seu usuário aqui">
+        </div>
+        <div class="input__container">
+          <label for="registerEmail">Email</label>
+          <input type="text" class="input__register" id="registerEmail" placeholder="Digite seu email aqui">
+        </div>
+        <div class="input__container">
+          <label for="registerAvatar">Link da foto do perfil</label>
+          <input type="text" class="input__register" id="registerAvatar" placeholder="Insira o link aqui">
+        </div>
+        <div class="input__container">
+          <label for="registerPassword">Senha</label>
+          <input type="text" class="input__register" id="registerPassword" placeholder="Digite sua senha aqui">
+        </div>
+        <button type="submit" class="button__register confirm__button" id="registerButton">Cadastrar</button>
+        <button type="submit" class="button__register redirect-edit__button" id="loginButton">Voltar para o
+          login</button>
+      </form>
+    </div>
 
+    <aside class="info__container">
+      <h1 class="info__title">Petinfo</h1>
+      <b class="info__bold">Ooooooba!</b>
+      <p class="info__paragraph">Agora vamos poder contribuir para o bem estar do seu pet por meio do conhecimento</p>
+      <div class="images__container">
+        <img src="../assets/imgs/register1.png" alt="" class="image" alt="" class="image">
+        <div>
+          <div class="images__inside">
+            <img src="../assets/imgs/register2.png" alt="" class="image">
+            <img src="../assets/imgs/register4.png" alt="" class="image">
+          </div>
+          <img src="../assets/imgs/register3.png" alt="" class="image">
+        </div>
+      </div>
+    </aside>
+  </main>
+  <div class="toltip__container" id="toltip">
+    <div class="toltip__message"><i class="fa fa-circle-check check__icon"></i>
+      <p>Sua conta foi criada com sucesso!</p>
+    </div>
+
+    <p class="toltip__paragraph">Agora você pode acessar os conteúdos utilizando seu usuário e senha na página de login:
+      <a href="http://127.0.0.1:5501/s">Acessar página de
+        login</a></p>
+  </div>
 </body>
 
 </html>

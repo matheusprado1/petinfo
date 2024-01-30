@@ -4,10 +4,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PetInfo</title>
+  <link rel="stylesheet" href="./src/styles/reset.css">
+  <link rel="stylesheet" href="./src/styles/globalStyles.css">
+  <link rel="stylesheet" href="./src/styles/buttons.css">
+  <link rel="stylesheet" href="./src/styles/index.css">
+  <script type="module" src="./src/scripts/api.js" defer></script>
+  <script type="module" src="./src/scripts/index.js" defer></script>
+  <title>PetInfo - Login</title>
 </head>
 
 <body>
+  <main class="main__container">
+    <div class="info__container">
+      <h1 class="info__title">Petinfo</h1>
+      <h2 class="info__description">
+        <b class="info__bold">Amor</b> e <b class="info__bold">carinho</b> por meio do conhecimento
+      </h2>
+      <p class="info__paragraph">Todas as informações para melhorar a vida do seu pet em um só lugar</p>
+      <div class="images__container">
+        <div class="images__side">
+          <div class="images__block">
+            <img src="./src/assets/imgs/login1.png" alt="gato" class="image">
+            <img src="./src/assets/imgs/login2.png" alt="cachorro" class="image">
+          </div>
+          <div class="images__below">
+            <img src="./src/assets/imgs/login3.png" alt="cachorro" class="image">
+          </div>
+        </div>
+        <div class="image__aside">
+          <img src="./src/assets/imgs/login4.png" alt="gato" class="image">
+        </div>
+      </div>
+    </div>
+    <aside class="login__container">
+      <h3 class="login__title">Login</h3>
+      <form action="" class="login__form">
+        <div class="input__container">
+          <label for="loginEmail">Email</label>
+          <input type="text" class="input__login" id="loginEmail" placeholder="Digite seu email">
+        </div>
+        <div class="input__container">
+          <label for="loginPassword">Senha</label>
+          <input type="text" class="input__login" id="loginPassword" placeholder="Digite sua senha">
+        </div>
+        <button type="submit" class="button__login confirm__button" id="loginButton">Acessar</button>
+      </form>
+      <div class="login__info">
+        <p class="login__info__title">Ainda não possui conta?</p>
+        <p class="login__info__description">Clicando no botão abaixo, você pode se cadastrar rapidamente</p>
+        <button class="button__login redirect-edit__button" id="registerButton">Cadastrar</button>
+      </div>
+    </aside>
+  </main>
 
 </body>
 
