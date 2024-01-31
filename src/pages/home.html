@@ -63,7 +63,20 @@
             </div>
           </div>
         </div>
-
+      </dialog>
+      <dialog class="delete__modal" id="deleteModalController">
+        <div class="delete__modal__container">
+          <div class="delete__modal__header">
+            <h3 class="delete__modal__title">Confirmação de exclusão</h3>
+            <span>X</span>
+          </div>
+          <h2 class="delete__modal__confirm">Tem certeza que deseja excluir este post?</h2>
+          <p>Essa ação não poderá ser desfeita, então pedimos que tenha cautela antes de concluir</p>
+          <div class="delete__modal__buttons">
+            <button class="close-cancel__button" id="closeDeleteModal">Cancelar</button>
+            <button class="alert__button" id="deletePost">Sim, excluir este post</button>
+          </div>
+        </div>
       </dialog>
     </div>
   </main>

@@ -90,3 +90,17 @@ export const patchPost = async (id, token, data) => {
 
   return post;
 }
+
+export const deletePost = async (id, token) => {
+  const post = await fetch(`${baseURL}/posts/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }
+  })
+    .then((response) => response.json())
+    .then((responseJson) => responseJson)
+    .catch((error) => error);
+  return post
+}

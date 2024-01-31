@@ -1,4 +1,4 @@
-import { createPost, getPosts, getProfile, patchPost } from "./api.js";
+import { createPost, getPosts, getProfile, patchPost, deletePost } from "./api.js";
 
 const renderProfile = async () => {
   const token = JSON.parse(localStorage.getItem("token"))
@@ -37,7 +37,7 @@ const renderPosts = async () => {
           </div>
           <div class="buttons__container">
             <button class="redirect-edit__button edit__button" data-id=${post.id}>Editar</button>
-            <button class="close-cancel__button">Excluir</button>
+            <button class="close-cancel__button delete__button" data-id=${post.id}>Excluir</button>
           </div>
         </div>
         <h2>${post.title}</h2> 
@@ -63,8 +63,6 @@ const renderPosts = async () => {
     `)
     }
   })
-
-
 
 }
 renderPosts();
@@ -124,7 +122,7 @@ sendPost.addEventListener("click", () => {
 
 const logoutValidator = async () => {
   const profile = document.querySelector("#profile");
-  const token = JSON.parse(localStorage.getItem("token"))
+  const token = JSON.parse(localStorage.getItem("token"));
   const profileContent = await getProfile(token.token);
 
 
@@ -146,13 +144,17 @@ imageProfile.addEventListener("click", () => {
 
 window.onload = () => {
   const postsContainer = document.querySelector("#posts");
-  const modalContainer = document.querySelector("#editModalController");
+  const editModalContainer = document.querySelector("#editModalController");
+  const deleteModalContainer = document.querySelector("#deleteModalController");
 
   postsContainer.addEventListener("click", (event) => {
     if (event.target.classList.contains("edit__button")) {
-      // console.log('Botão editar clicado!');
-      modalContainer.showModal();
+      editModalContainer.showModal();
       closeEditModal();
+    }
+    if (event.target.classList.contains("delete__button")) {
+      deleteModalContainer.showModal();
+      closeDeleteModal();
     }
   });
 }
@@ -165,6 +167,17 @@ const closeEditModal = () => {
     modalContainer.close();
   })
 }
+
+const closeDeleteModal = () => {
+  const closeButton = document.querySelector("#closeDeleteModal");
+  const deleteModalContainer = document.querySelector("#deleteModalController");
+
+  closeButton.addEventListener("click", () => {
+    deleteModalContainer.close();
+  })
+}
+
+let currentPostId = null;
 
 const getEditValues = async () => {
   const editTitle = document.querySelector("#editTitle");
@@ -182,10 +195,61 @@ const getEditValues = async () => {
       if (post.user.id === profile.id) {
         editTitle.setAttribute("value", `${post.title}`);
         editContent.textContent = `${post.content}`;
+        currentPostId = postId;
+      }
+    })
+  })
+}
+getEditValues()
+
+const sendEditPost = () => {
+  const title = document.querySelector("#editTitle").value;
+  const content = document.querySelector("#editContent").value;
+
+  return {
+    title: `${title}`,
+    content: `${content}`
+  }
+}
+
+const editPost = document.querySelector("#editPost");
+
+editPost.addEventListener("click", async () => {
+  if (currentPostId) {
+    const data = sendEditPost();
+    const token = JSON.parse(localStorage.getItem("token")).token;
+    const updatePost = await patchPost(currentPostId, token, data);
+    console.log(updatePost)
+
+  }
+})
+
+const getDeletePost = async () => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const profile = await getProfile(token.token);
+  const posts = await getPosts(token.token);
+
+  const deleteButtons = [...document.querySelectorAll(".delete__button")];
+
+  deleteButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const postId = button.getAttribute("data-id");
+      const post = posts.find(post => post.id === postId);
+      if (post.user.id === profile.id) {
+        currentPostId = postId;
       }
     })
   })
 }
 
-getEditValues();
+getDeletePost();
 
+const deleteButton = document.querySelector("#deletePost");
+
+deleteButton.addEventListener("click", async () => {
+  if (currentPostId) {
+    const token = JSON.parse(localStorage.getItem("token")).token;
+    const post = await deletePost(currentPostId, token);
+    console.log(post)
+  }
+})
